@@ -1,16 +1,42 @@
-<form action="/new" accept-charset="UTF-8" methode=POST data-turbo=false>
-    <label for="email">Email:</label>
-    <input type="text" id="email" name="email"><br><br>
+     <!--  <form action="/new" accept-charset="UTF-8" methode="POST" data-turbo=false>
+            <label for="email">Email</label>
+            <input type="text" id="email" name="user[email]"><br><br>
 
-    <label for="uname">Username:</label>
-    <input type="text" id="uname" name="uname"><br><br>
+            <label for="uname">Username</label>
+            <input type="text" id="uname" name="user[username]"><br><br>
 
-    <label for="pw">Password:</label>
-    <input type="password" id="pw" name="pw"><br><br>
+            <label for="pw">Password</label>
+            <input type="password" id="pw" name="user[password]"><br><br>
 
-    <input type="submit" value="Submit">
+            <input type="hidden" name="authenticity_token"
+                    value="<%= form_authenticity_token %>"
+        >
+
+            <input type="submit" value="Submit">
 
 
 
 
-</form>
+        </form>
+        -->
+
+
+       <%= form_tag('/new') do %>
+       <div>
+         <%= label_tag(:email, 'Email')%>
+         <%= text_field_tag(:email)%>
+       </div>
+         <br>
+        <div>
+         <%= label_tag(:username, 'Username')%>
+         <%= text_field_tag(:username)%>
+        </div>
+        <br>
+        <div>
+         <%= label_tag(:password, 'Password')%>
+         <%= password_field_tag(:password)%>
+         </div>
+        <br>
+         <%= submit_tag('Submit')%>
+
+       <% end %>
