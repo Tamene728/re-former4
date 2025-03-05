@@ -21,7 +21,7 @@
         -->
 
 
-       <%= form_tag('/new') do %>
+       <!-- <%= form_tag('/new') do %>
        <div>
          <%= label_tag(:email, 'Email')%>
          <%= text_field_tag(:email)%>
@@ -39,4 +39,37 @@
         <br>
          <%= submit_tag('Submit')%>
 
+       <% end %>
+       -->
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+       <%= form_with model: @user do |form|%>
+        <div>
+          <%= form.label :email, 'Email'%>
+          <%= form.email_field :email%>
+        </div>
+        <br>
+        <div>
+          <%= form.label :username, 'Username'%>
+          <%= form.text_field :username%>
+        </div>
+        <br>
+        <div>
+          <%= form.label :password, 'Password'%>
+          <%= form.password_field :password%>
+        </div>
+        <br> 
+        <%= form.submit 'Submit'%>
        <% end %>
